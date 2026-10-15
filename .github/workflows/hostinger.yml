@@ -16,6 +16,66 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Clean up accidental nested folders on Hostinger
+        env:
+          HOSTINGER_HOST: ${{ secrets.HOSTINGER_HOST }}
+          HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
+          HOSTINGER_PASSWORD: ${{ secrets.HOSTINGER_PASSWORD }}
+        run: |
+          python3 - << 'EOF'
+          import ftplib, os, sys
+
+          host = os.environ.get('HOSTINGER_HOST', '').strip()
+          user = os.environ.get('HOSTINGER_USERNAME', '').strip()
+          password = os.environ.get('HOSTINGER_PASSWORD', '').strip()
+
+          if not host or not user or not password:
+              print("Notice: Missing FTP credentials, skipping cleanup step.")
+              sys.exit(0)
+
+          try:
+              ftp = ftplib.FTP()
+              ftp.connect(host, 21, timeout=30)
+              ftp.login(user, password)
+              print(f"Logged in to Hostinger FTP. Working directory: {ftp.pwd()}")
+
+              def delete_recursive(path):
+                  try:
+                      items = ftp.nlst(path)
+                  except Exception as e:
+                      items = []
+                  for item in items:
+                      base = os.path.basename(item)
+                      if base in [".", ".."]:
+                          continue
+                      try:
+                          ftp.delete(item)
+                      except Exception:
+                          delete_recursive(item)
+                  try:
+                      ftp.rmd(path)
+                      print(f"Removed directory: {path}")
+                  except Exception as e:
+                      print(f"Failed to remove directory {path}: {e}")
+
+              try:
+                  root_items = ftp.nlst()
+                  print("Current root items on Hostinger:", root_items)
+                  # If a nested public_html or public folder was created inside the default public_html:
+                  for target in ["public_html", "public"]:
+                      matching = [x for x in root_items if os.path.basename(x.rstrip('/')) == target]
+                      for m in matching:
+                          print(f"Found accidental nested folder '{m}'. Removing it now...")
+                          delete_recursive(m)
+              except Exception as e:
+                  print(f"Warning during directory scan: {e}")
+
+              ftp.quit()
+              print("Cleanup finished successfully.")
+          except Exception as e:
+              print(f"Cleanup script warning: {e}")
+          EOF
+
       - name: Deploy website to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
@@ -41,6 +101,10 @@ jobs:
             .grok/**
             scripts/
             scripts/**
+            src/
+            src/**
+            public/
+            public/**
             *.mjs
             *.json
             *.ts
