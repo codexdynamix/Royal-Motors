@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Strong mags. Big presence. Discover premium 21-inch alloy wheels for Mercedes-Benz at Royal Motors, Harare. Free fitment, balancing and wheel nuts.",
+          "Premium 21-inch alloy wheels and mags for Mercedes-Benz in Harare, Zimbabwe. Discover luxury wheel upgrades with free fitment, balancing, and workshop consultations.",
       },
       { name: "theme-color", content: "#0a0a0a" },
     ],

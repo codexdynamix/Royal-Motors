@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Loader2, MapPin, MessageCircle, Send, Sparkles, Wrench } from "lucide-react";
-import { CATALOGUE_URL } from "@/data/landing";
+import { CheckCircle2, Loader2, MapPin, Send, Wrench } from "lucide-react";
 
 const INCH_OPTIONS = ["15″", "16″", "17″", "18″", "20″", "21″"];
 const HOLE_OPTIONS = ["4 Holes", "5 Holes", "6 Holes"];
@@ -85,16 +84,6 @@ export function Enquiry() {
 
             <div className="enquiry-contact-item">
               <div className="enquiry-contact-icon">
-                <MessageCircle size={20} />
-              </div>
-              <div>
-                <strong>Customer Assistance</strong>
-                <p>+263 77 287 7953 · Quick replies during workshop hours</p>
-              </div>
-            </div>
-
-            <div className="enquiry-contact-item">
-              <div className="enquiry-contact-icon">
                 <Wrench size={20} />
               </div>
               <div>
@@ -102,21 +91,6 @@ export function Enquiry() {
                 <p>Free fitting, high-speed balancing &amp; precision wheel nuts</p>
               </div>
             </div>
-          </div>
-
-          <div className="enquiry-catalogue-callout">
-            <div>
-              <Sparkles size={18} className="gold-icon" />
-              <span>Prefer to look through photos first?</span>
-            </div>
-            <a
-              href={CATALOGUE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="catalogue-inline-link"
-            >
-              Open Live WhatsApp Catalogue ↗
-            </a>
           </div>
         </div>
 
@@ -186,7 +160,7 @@ export function Enquiry() {
                       inputMode="tel"
                       value={phone}
                       onChange={(event) => setPhone(event.target.value)}
-                      placeholder="e.g. 077 287 7953"
+                      placeholder="e.g. 077 123 4567"
                     />
                   </label>
                 </div>

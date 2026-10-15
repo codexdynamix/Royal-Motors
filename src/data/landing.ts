@@ -1,8 +1,5 @@
 export const LOGO_SRC = "/logo.png";
 
-export const CATALOGUE_URL = "https://wa.me/c/263777334569";
-export const WHATSAPP_URL = "https://wa.me/263772877953";
-
 export const features = [
   {
     icon: "shield",
