@@ -20,13 +20,13 @@ jobs:
           server: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          # Use plain FTP on port 21 to prevent ECONNRESET on Hostinger pure-ftpd data sockets
           protocol: ftp
           port: 21
-          # Target directory in Hostinger (public_html/ or ./ depending on your FTP user root)
           server-dir: public_html/
           exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.github/**
+            .git/
+            .git/**
+            .github/
+            .github/**
+            node_modules/
+            node_modules/**
