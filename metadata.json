@@ -1,0 +1,8 @@
+{
+  "name": "Royal Motors",
+  "description": "Premium 21-inch alloy wheels and mags for Mercedes-Benz in Harare, Zimbabwe. Discover luxury wheel upgrades with free fitment, balancing, and direct WhatsApp consultations.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

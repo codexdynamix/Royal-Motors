@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Deploy website to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
@@ -18,7 +20,13 @@ jobs:
           server: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          protocol: ftps
+          # Use plain FTP on port 21 to prevent ECONNRESET on Hostinger pure-ftpd data sockets
+          protocol: ftp
           port: 21
-          security: loose
-          server-dir: ./
+          # Target directory in Hostinger (public_html/ or ./ depending on your FTP user root)
+          server-dir: public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
