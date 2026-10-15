@@ -447,19 +447,24 @@
     .steps h3 { font-size: 17px; margin: 16px 0 8px; }
     .steps p { font-size: 13px; color: var(--subtle); line-height: 1.6; }
 
-    /* Workshop Enquiry (Conventional 2-column Layout) */
+    /* Workshop Enquiry (Responsive Layout) */
     .enquiry {
-      background: #0e0707;
+      background: #0c0707;
       border-top: 1px solid var(--line);
-      padding: 92px 34px 80px;
+      padding: 88px 30px 76px;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      width: 100%;
     }
     .enquiry-container {
       max-width: 1120px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 52px;
       align-items: start;
+      box-sizing: border-box;
+      width: 100%;
     }
     .enquiry-left h2 {
       font-size: clamp(34px, 4vw, 52px);
@@ -469,7 +474,7 @@
       color: var(--subtle);
       font-size: 15px;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
       max-width: 440px;
     }
     .enquiry-contact-cards {
@@ -485,10 +490,11 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 16px 18px;
+      box-sizing: border-box;
     }
     .enquiry-contact-icon {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
       background: rgba(225, 6, 0, 0.12);
       color: var(--gold);
@@ -503,7 +509,7 @@
       font-size: 14px;
       font-weight: 600;
       color: #fff;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
     .enquiry-contact-item p {
       font-size: 12px;
@@ -511,14 +517,44 @@
       line-height: 1.5;
       margin: 0;
     }
+    .enquiry-catalogue-callout {
+      margin-top: 26px;
+      background: rgba(26, 16, 16, 0.65);
+      border: 1px dashed rgba(225, 6, 0, 0.35);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+    .enquiry-catalogue-callout > div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #d1d1d6;
+    }
+    .enquiry-catalogue-callout svg { color: var(--gold); }
+    .catalogue-inline-link {
+      color: #ff3b30;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+    .catalogue-inline-link:hover { color: #ffffff; }
 
     /* Form Card Container */
     .enquiry-card {
       background: #141416;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 36px 32px;
+      padding: 34px 30px;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+      box-sizing: border-box;
+      width: 100%;
     }
     .enquiry-card h3 {
       font-size: 20px;
@@ -529,27 +565,91 @@
     .enquiry-card-subtitle {
       font-size: 13px;
       color: var(--subtle);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
     .enquiry-form {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .enquiry-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .enquiry-form label {
       display: flex;
       flex-direction: column;
       gap: 7px;
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #d1d1d6;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .enquiry-form label .req { color: var(--gold); font-weight: 700; }
+    .field-optional { font-size: 11px; color: #8e8e93; font-weight: 400; }
+    .enquiry-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .field-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 13px;
       font-weight: 500;
       color: #d1d1d6;
     }
-    .enquiry-form label .req { color: var(--gold); }
+    .field-label .req { color: var(--gold); font-weight: 700; }
+    .field-hint { font-size: 11px; color: #8e8e93; font-weight: 400; }
+    .chip-group {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .chip-group.holes-group {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .chip-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #19191d;
+      color: #d1d1d6;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 11px 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      user-select: none;
+      min-height: 44px;
+      box-sizing: border-box;
+    }
+    .chip-btn:hover {
+      background: #242429;
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+    .chip-btn.is-selected {
+      background: var(--gold);
+      color: #ffffff;
+      border-color: var(--gold);
+      box-shadow: 0 4px 14px rgba(225, 6, 0, 0.4);
+    }
     .enquiry-form input, .enquiry-form textarea {
       width: 100%;
       border: 1px solid #2c2c30;
@@ -557,12 +657,13 @@
       color: #f5f5f7;
       border-radius: 10px;
       padding: 13px 15px;
-      font-size: 14px;
+      font-size: 15px;
       font-family: inherit;
       outline: none;
+      box-sizing: border-box;
       transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
     }
-    .enquiry-form textarea { resize: vertical; min-height: 90px; }
+    .enquiry-form textarea { resize: vertical; min-height: 72px; }
     .enquiry-form input::placeholder, .enquiry-form textarea::placeholder { color: #646468; }
     .enquiry-form input:focus, .enquiry-form textarea:focus {
       border-color: var(--gold);
@@ -584,6 +685,7 @@
       cursor: pointer;
       margin-top: 4px;
       box-shadow: 0 6px 18px rgba(225, 6, 0, 0.3);
+      box-sizing: border-box;
       transition: background-color 0.25s, filter 0.25s, scale 0.15s;
     }
     .enquiry-submit-btn:hover { background: #ff1a12; filter: brightness(1.05); }
@@ -593,19 +695,60 @@
       font-size: 11px;
       color: #7c7c82;
       text-align: center;
-      margin-top: 4px;
+      margin-top: 2px;
+      line-height: 1.5;
     }
     .enquiry-sent {
       border: 1px solid rgba(225, 6, 0, 0.4);
-      border-radius: 14px;
-      padding: 24px 20px;
+      border-radius: 16px;
+      padding: 28px 20px;
       background: rgba(225, 6, 0, 0.08);
       color: #f5f5f7;
       text-align: center;
+      box-sizing: border-box;
     }
+    .sent-icon {
+      color: #30d158;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 12px;
+      display: block;
+    }
+    .enquiry-sent h4 { font-size: 20px; margin-bottom: 8px; color: #fff; }
+    .sent-phone-badge {
+      display: inline-block;
+      background: #1f1f23;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 18px;
+      border-radius: 980px;
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      margin: 14px auto 20px;
+    }
+    .sent-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .catalogue-secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #242428;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 980px;
+      padding: 12px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .catalogue-secondary-btn:hover { background: #323238; }
     .enquiry-resend-btn {
-      margin-top: 16px;
-      padding: 10px 20px;
+      padding: 12px 22px;
       font-size: 13px;
     }
 
@@ -614,6 +757,8 @@
       text-align: center;
       padding: 48px 24px 38px;
       border-top: 1px solid var(--line);
+      box-sizing: border-box;
+      width: 100%;
     }
     .footer-brand {
       display: flex;
@@ -645,26 +790,34 @@
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
       .feature-card:last-child { grid-column: 1 / -1; }
       .steps { grid-template-columns: 1fr; gap: 24px; }
       .review-grid { grid-template-columns: 1fr; }
       .fitment-inner { grid-template-columns: 1fr; gap: 36px; }
       .model-columns { grid-template-columns: 1fr; gap: 32px; }
+      .enquiry-container { grid-template-columns: 1fr; gap: 40px; }
     }
     @media (max-width: 767px) {
       .brand img { height: 120px; }
-      .hero-perks { grid-template-columns: 1fr 1fr; gap: 14px 0; }
+      .hero-perks { grid-template-columns: 1fr 1fr; gap: 12px 0; padding: 14px 6px; }
       .hero-perks > span:nth-child(2) { border-right: none; }
       .hero-photo { height: 240px; margin: 12px auto 0; width: calc(100% - 32px); }
       .hero-photo figcaption > span:first-child { font-size: 20px; }
-      .section { padding: 60px 20px; }
-      .enquiry { padding: 56px 20px 48px; }
-      .enquiry-form { grid-template-columns: 1fr; }
-      .enquiry-submit { width: 100%; }
+      .section { padding: 48px 16px; }
+      .enquiry { padding: 48px 16px 40px; }
+      .enquiry-card { padding: 24px 16px; border-radius: 16px; }
+      .enquiry-row { grid-template-columns: 1fr; gap: 12px; }
+      .chip-group { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .chip-btn { padding: 10px 4px; font-size: 13px; }
       h1 { font-size: 38px; }
       h2 { font-size: 34px; }
+      footer { padding: 32px 16px 24px; }
+    }
+    @media (max-width: 380px) {
+      .chip-group { grid-template-columns: repeat(2, 1fr); }
+      .chip-group.holes-group { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -711,10 +864,11 @@
       </div>
 
       <div class="catalogue-action">
-        <a class="catalogue-button" href="https://wa.me/c/263777334569" target="_blank" rel="noopener noreferrer">
-          View Our Catalogue
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        <a class="catalogue-button" href="#enquire" onclick="event.preventDefault();document.getElementById('enquire')?.scrollIntoView({behavior:'smooth'});" aria-label="Scroll down to vehicle fitment and rim options form">
+          Request Rim Options
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
         </a>
+        <span class="destination-note">Check stock, 15″–21″ sizes &amp; fitment options below</span>
       </div>
 
       <div class="hero-trust">
@@ -989,17 +1143,17 @@
     </div>
   </section>
 
-  <!-- 06 / Workshop Enquiry Form (Conventional Website Form Layout) -->
+  <!-- 06 / Workshop Enquiry Form (Responsive Vehicle Fitment Form) -->
   <section class="enquiry reveal" id="enquire">
     <div class="enquiry-container">
       <div class="enquiry-left">
-        <p class="eyebrow">06 / THE WORKSHOP</p>
+        <p class="eyebrow">06 / WORKSHOP FITMENT &amp; CATALOGUE</p>
         <h2>
-          Tell us the car.<br />
-          <span>We'll sort the fit.</span>
+          Tell us your ride.<br />
+          <span>We match the fit.</span>
         </h2>
         <p class="enquiry-lead">
-          Leave your vehicle details and requirements. Our workshop team replies directly on WhatsApp with stock, specs, and fitment advice.
+          Select your vehicle specs, preferred rim diameter (15″ to 21″), and bolt pattern. Our Harare workshop specialists will instantly match in-stock mag sets and quote you on WhatsApp.
         </p>
 
         <div class="enquiry-contact-cards">
@@ -1019,7 +1173,7 @@
             </div>
             <div>
               <strong>WhatsApp Hotline</strong>
-              <p>+263 77 287 7953 · Quick replies during workshop hours</p>
+              <p>+263 77 287 7953 · Direct replies from fitment techs</p>
             </div>
           </div>
 
@@ -1028,62 +1182,127 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
             <div>
-              <strong>All Extras Included</strong>
-              <p>Free fitment, balancing &amp; wheel nuts with every set</p>
+              <strong>Complete Fitment Package Included</strong>
+              <p>Free fitting, high-speed balancing &amp; precision wheel nuts</p>
             </div>
           </div>
+        </div>
+
+        <div class="enquiry-catalogue-callout">
+          <div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+            <span>Prefer to look through photos first?</span>
+          </div>
+          <a href="https://wa.me/c/263777334569" target="_blank" rel="noopener noreferrer" class="catalogue-inline-link">
+            Open Live WhatsApp Catalogue ↗
+          </a>
         </div>
       </div>
 
       <div class="enquiry-right">
         <div class="enquiry-card">
-          <h3>Vehicle Fitment Enquiry</h3>
-          <p class="enquiry-card-subtitle">
-            Fill out this quick form to receive options directly on WhatsApp.
-          </p>
+          <div class="enquiry-card-header">
+            <h3>Request Rim Options</h3>
+            <p class="enquiry-card-subtitle">
+              Enter your vehicle details below to receive matching in-stock rim options and quotes.
+            </p>
+          </div>
 
           <div id="enquirySuccess" style="display: none;" class="enquiry-sent" role="status">
-            <p><strong>WhatsApp is ready!</strong></p>
-            <p style="margin-top: 6px; font-size: 13px; color: #cfcfd4;">If the chat didn’t open automatically, send your message directly to <strong>077 287 7953</strong>.</p>
-            <button
-              type="button"
-              class="catalogue-button enquiry-resend-btn"
-              onclick="document.getElementById('enquirySuccess').style.display='none';document.getElementById('enquiryForm').style.display='flex';"
-            >
-              Send Another Enquiry
-            </button>
+            <svg class="sent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            <h4>Thank You!</h4>
+            <p>Your rim options enquiry has been successfully submitted.</p>
+            <p class="sent-subtext" style="margin-top: 8px; font-size: 13px; color: #cfcfd4;">
+              Our workshop team has received your vehicle specifications and will contact you shortly with matching in-stock options and pricing.
+            </p>
+            <div class="sent-actions" style="margin-top: 18px;">
+              <button
+                type="button"
+                class="catalogue-button enquiry-resend-btn"
+                onclick="document.getElementById('enquirySuccess').style.display='none';document.getElementById('enquiryForm').reset();document.getElementById('enquiryForm').style.display='flex';"
+              >
+                Submit Another Request
+              </button>
+            </div>
           </div>
 
           <form class="enquiry-form" id="enquiryForm">
+            <!-- Contact Row -->
             <div class="enquiry-row">
               <label>
-                Your Name <span class="req">*</span>
+                <span>Your Name <span class="req">*</span></span>
                 <input name="name" id="eqName" autocomplete="name" required placeholder="e.g. Adrian Musanga" />
               </label>
 
               <label>
-                WhatsApp Number <span class="req">*</span>
-                <input name="phone" id="eqPhone" type="tel" autocomplete="tel" required inputmode="tel" placeholder="07X XXX XXXX" />
+                <span>Phone / WhatsApp Number <span class="req">*</span></span>
+                <input name="phone" id="eqPhone" type="tel" autocomplete="tel" required inputmode="tel" placeholder="e.g. 077 287 7953" />
               </label>
             </div>
 
+            <!-- Vehicle Make & Year Model -->
+            <div class="enquiry-row">
+              <label>
+                <span>Vehicle Make <span class="req">*</span></span>
+                <input name="make" id="eqMake" required placeholder="e.g. Mercedes-Benz, BMW, Toyota…" />
+              </label>
+
+              <label>
+                <span>Year &amp; Model <span class="req">*</span></span>
+                <input name="yearModel" id="eqYearModel" required placeholder="e.g. 2021 GLE 43, 2019 Hilux, 2018 320d" />
+              </label>
+            </div>
+
+            <!-- Rim Size Selection -->
+            <div class="enquiry-field-group">
+              <span class="field-label">
+                <span>Rim Size (Inches) <span class="req">*</span></span>
+                <small class="field-hint">Select diameter</small>
+              </span>
+              <div class="chip-group" id="inchChipGroup" role="radiogroup" aria-label="Rim size in inches">
+                <button type="button" class="chip-btn" data-value="15″">15″</button>
+                <button type="button" class="chip-btn" data-value="16″">16″</button>
+                <button type="button" class="chip-btn" data-value="17″">17″</button>
+                <button type="button" class="chip-btn" data-value="18″">18″</button>
+                <button type="button" class="chip-btn is-selected" data-value="20″">20″</button>
+                <button type="button" class="chip-btn" data-value="21″">21″</button>
+              </div>
+              <input type="hidden" id="eqInches" name="inches" value="20″" />
+            </div>
+
+            <!-- Stud Hole Pattern (4/5/6) -->
+            <div class="enquiry-field-group">
+              <span class="field-label">
+                <span>Wheel Stud Holes <span class="req">*</span></span>
+                <small class="field-hint">4, 5, or 6 holes</small>
+              </span>
+              <div class="chip-group holes-group" id="holeChipGroup" role="radiogroup" aria-label="Wheel hole count">
+                <button type="button" class="chip-btn" data-value="4 Holes">4 Holes</button>
+                <button type="button" class="chip-btn is-selected" data-value="5 Holes">5 Holes</button>
+                <button type="button" class="chip-btn" data-value="6 Holes">6 Holes</button>
+              </div>
+              <input type="hidden" id="eqHoles" name="holes" value="5 Holes" />
+            </div>
+
+            <!-- Tyre Sizes -->
             <label>
-              Vehicle Make &amp; Model
-              <input name="vehicle" id="eqVehicle" placeholder="e.g. Mercedes GLE 43, E53, Hilux…" />
+              <span>Tyre Sizes <span class="field-optional">(If known or currently fitted)</span></span>
+              <input name="tyreSizes" id="eqTyreSizes" placeholder="e.g. 275/40 R20, 265/65 R17, or type 'Recommend for me'" />
             </label>
 
+            <!-- Notes & Finish Preference -->
             <label>
-              What are you looking for?
-              <textarea name="message" id="eqMessage" rows="3" placeholder="Specify 21″ style, finish preference, or questions about offset and fitment"></textarea>
+              <span>Notes &amp; Finish Preference <span class="field-optional">(Optional)</span></span>
+              <textarea name="notes" id="eqNotes" rows="2" placeholder="e.g. Prefer brushed silver, bronze concave, gloss black, or need offset advice"></textarea>
             </label>
 
-            <button class="catalogue-button enquiry-submit-btn" type="submit">
+            <button class="catalogue-button enquiry-submit-btn" id="eqSubmitBtn" type="submit">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-              Send Enquiry via WhatsApp
+              Request Rim Options
             </button>
 
             <span class="enquiry-privacy-note">
-              🔒 Direct WhatsApp message to Royal Motors workshop. No spam.
+              🔒 Your information is confidential and will only be used to provide fitment specifications.
             </span>
           </form>
         </div>
@@ -1135,30 +1354,72 @@
       reveals.forEach(el => observer.observe(el));
     })();
 
-    // 3. WhatsApp Form Submit
+    // 3. Chip selectors (Inches and Holes)
+    (function initChips() {
+      function bindGroup(groupId, hiddenInputId) {
+        const group = document.getElementById(groupId);
+        const hiddenInput = document.getElementById(hiddenInputId);
+        if (!group || !hiddenInput) return;
+        const buttons = group.querySelectorAll('.chip-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', function() {
+            buttons.forEach(b => b.classList.remove('is-selected'));
+            btn.classList.add('is-selected');
+            hiddenInput.value = btn.getAttribute('data-value');
+          });
+        });
+      }
+      bindGroup('inchChipGroup', 'eqInches');
+      bindGroup('holeChipGroup', 'eqHoles');
+    })();
+
+    // 4. Form Submit to Backend Email Endpoints
     (function initForm() {
       const form = document.getElementById('enquiryForm');
+      const submitBtn = document.getElementById('eqSubmitBtn');
       if (!form) return;
-      form.addEventListener('submit', function(e) {
+      form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const name = (document.getElementById('eqName').value || '').trim();
-        const phone = (document.getElementById('eqPhone').value || '').trim();
-        const vehicle = (document.getElementById('eqVehicle').value || '').trim();
-        const msg = (document.getElementById('eqMessage').value || '').trim();
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerText = 'Submitting...';
+        }
 
-        const lines = [
-          'Royal Motors enquiry',
-          'Name: ' + name,
-          'Phone: ' + phone
-        ];
-        if (vehicle) lines.push('Vehicle: ' + vehicle);
-        if (msg) lines.push(msg);
+        const payload = {
+          name: (document.getElementById('eqName').value || '').trim(),
+          phone: (document.getElementById('eqPhone').value || '').trim(),
+          make: (document.getElementById('eqMake').value || '').trim(),
+          yearModel: (document.getElementById('eqYearModel').value || '').trim(),
+          inches: (document.getElementById('eqInches').value || '20″').trim(),
+          holes: (document.getElementById('eqHoles').value || '5 Holes').trim(),
+          tyreSizes: (document.getElementById('eqTyreSizes').value || '').trim(),
+          notes: (document.getElementById('eqNotes').value || '').trim(),
+          timestamp: new Date().toISOString()
+        };
 
-        const waUrl = 'https://wa.me/263772877953?text=' + encodeURIComponent(lines.join('\n'));
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-
-        form.style.display = 'none';
-        document.getElementById('enquirySuccess').style.display = 'block';
+        try {
+          let res = await fetch('/api/enquiry', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) {
+            await fetch('/submit-enquiry.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          }
+        } catch (err) {
+          console.warn('Network boundary on submission', err);
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Request Rim Options';
+          }
+          form.style.display = 'none';
+          document.getElementById('enquirySuccess').style.display = 'block';
+        }
       });
     })();
   </script>

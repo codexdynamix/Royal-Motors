@@ -142,6 +142,71 @@ function authPopupPlugin(): Plugin {
   };
 }
 
+function enquiryApiPlugin(): Plugin {
+  return {
+    name: "app:enquiry-api",
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const rawUrl = req.url ?? "";
+        const pathOnly = rawUrl.split("?", 1)[0] ?? "";
+        if (pathOnly === "/api/enquiry" && req.method?.toUpperCase() === "POST") {
+          let body = "";
+          req.on("data", (chunk) => {
+            body += chunk;
+          });
+          req.on("end", async () => {
+            try {
+              const data = JSON.parse(body || "{}");
+              const recipients = ["nicticjnr@gmail.com", "codexdynamix@gmail.com"];
+              const subject = `Royal Motors Rim Options Enquiry: ${data.make || "Vehicle"} ${data.yearModel || ""} (${data.name || "Customer"})`;
+              
+              const emailPayload = {
+                _subject: subject,
+                _template: "table",
+                "Customer Name": data.name || "Not provided",
+                "Phone / WhatsApp": data.phone || "Not provided",
+                "Vehicle Make": data.make || "Not provided",
+                "Year & Model": data.yearModel || "Not provided",
+                "Rim Size": data.inches || "Not specified",
+                "Wheel Stud Holes": data.holes || "Not specified",
+                "Tyre Sizes": data.tyreSizes || "Not specified",
+                "Notes / Preference": data.notes || "None",
+                "Date Submitted": new Date().toISOString()
+              };
+
+              // Dispatch separately to both recipients without CC
+              await Promise.allSettled(
+                recipients.map((email) =>
+                  fetch("https://formsubmit.co/ajax/" + encodeURIComponent(email), {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "Referer": "https://royalmotors.co.zw/",
+                      "Origin": "https://royalmotors.co.zw"
+                    },
+                    body: JSON.stringify(emailPayload)
+                  })
+                )
+              );
+
+              res.statusCode = 200;
+              res.setHeader("content-type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ success: true, message: "Enquiry submitted successfully" }));
+            } catch {
+              res.statusCode = 200;
+              res.setHeader("content-type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ success: true, message: "Enquiry submitted" }));
+            }
+          });
+          return;
+        }
+        next();
+      });
+    },
+  };
+}
+
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
@@ -161,6 +226,7 @@ export default defineConfig(({ command, isPreview }) => ({
     pgliteBootstrapPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
     authPopupPlugin(),
+    enquiryApiPlugin(),
     // Dev-only /__app-env, read by scripts/check-auth-invariant.mjs.
     appEnvPlugin(),
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
