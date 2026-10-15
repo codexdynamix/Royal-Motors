@@ -22,7 +22,8 @@ jobs:
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           protocol: ftp
           port: 21
-          server-dir: public_html/
+          # Since Hostinger FTP accounts default directly inside public_html, use ./ to deploy to root
+          server-dir: ./
           exclude: |
             .git/
             .git/**
@@ -30,3 +31,15 @@ jobs:
             .github/**
             node_modules/
             node_modules/**
+            migrations/
+            migrations/**
+            server/
+            server/**
+            .grok/
+            .grok/**
+            scripts/
+            scripts/**
+            *.mjs
+            *.json
+            *.ts
+            *.tsx
