@@ -4,15 +4,15 @@ import { CatalogueCta } from "@/components/catalogue-cta";
 
 const SLIDES = [
   {
-    src: "/media/slide-1.jpg",
+    src: "/media/slide-1.jpg?v=2",
     alt: "Iconic 21-inch brushed silver deep-dish 5-spoke monoblock mag wheel with mirror polished lip",
   },
   {
-    src: "/media/slide-2.jpg",
+    src: "/media/slide-2.jpg?v=2",
     alt: "Aggressive 21-inch satin bronze forged concave Y-spoke mag wheel with titanium perimeter bolts",
   },
   {
-    src: "/media/slide-3.jpg",
+    src: "/media/slide-3.jpg?v=2",
     alt: "Metallic silver BMW luxury sedan facing right with custom 21-inch alloy mag wheels",
   },
 ];
