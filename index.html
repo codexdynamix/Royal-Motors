@@ -90,13 +90,15 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      background: linear-gradient(
-        180deg,
-        rgba(10, 10, 10, 0.6) 0%,
-        rgba(10, 10, 10, 0.15) 36%,
-        rgba(10, 10, 10, 0.28) 70%,
-        rgba(10, 10, 10, 0.7) 100%
-      );
+      background:
+        radial-gradient(ellipse at 50% 45%, rgba(10, 10, 10, 0.28) 0%, rgba(6, 6, 6, 0.78) 100%),
+        linear-gradient(
+          180deg,
+          rgba(10, 10, 10, 0.82) 0%,
+          rgba(10, 10, 10, 0.44) 34%,
+          rgba(10, 10, 10, 0.52) 68%,
+          rgba(10, 10, 10, 0.94) 100%
+        );
     }
     .hero-slides {
       position: absolute;
